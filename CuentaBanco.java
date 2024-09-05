@@ -1,9 +1,9 @@
 package Cuenta_banco;
 
 public class CuentaBanco {
-    public class Cuenta {
+
         String numero;
-        Double saldo;
+        Double saldo=0.0;
         String tipo;
 
         public double consultarSaldo(){
@@ -14,17 +14,13 @@ public class CuentaBanco {
             this.saldo += cantidadConsignar;
         }
 
-        public double retirar(double cantidadRetirar){
-            double cantidadRetirada = 0;
-            if (this.consultarSaldo() >= cantidadRetirada) {
-                this.saldo -= cantidadRetirada;
-                cantidadRetirada = cantidadRetirar;
+        public boolean retirar(double cantidadRetirar){
+            if (this.consultarSaldo() >= cantidadRetirar) {
+                this.saldo -= cantidadRetirar;
+                return true;
             } else {
-                cantidadRetirada = this.saldo;
-                this.saldo = 0;
-                return this.consultarSaldo();
+                return false;
             }
-            return cantidadRetirar;
         }
-    }
+    
 }
