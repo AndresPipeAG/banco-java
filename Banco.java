@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 public class Banco {
 
+    String nombreBanco;
     ArrayList<CuentaBanco> cuentas;
     
-    public Banco(){
+    
+    public Banco(String nombreBanco){//Constructor
         this.cuentas = new ArrayList<>();
     }
 
@@ -21,11 +23,12 @@ public class Banco {
         return null;
     }
 
-    public boolean adicionarCuenta(String numero, double saldoInicial, String tipo) {
+    
+    public boolean adicionarCuenta(String numero, double saldoInicial, String tipo, Cliente titular) {
         if(this.buscarCuenta(numero) != null){
             return false;
         }else {
-            CuentaBanco cuenta = new CuentaBanco(tipo, numero, saldoInicial); //CuentaBanco -> Es el tipo de dato. cuenta -> Es el nombre del objeto. new CuentaBanco() -> Es el constructor.
+            CuentaBanco cuenta = new CuentaBanco(tipo, numero, saldoInicial, titular); //CuentaBanco -> Es el tipo de dato. cuenta -> Es el nombre del objeto. new CuentaBanco() -> Es el constructor.
             cuentas.add(cuenta);
             return true;
         }
@@ -41,5 +44,19 @@ public class Banco {
         return total;
     }
 
+    public String consultarClienteMayorSaldo(){
+        double mayorSaldo = 0;
+        CuentaBanco cuentaMayorSaldo = null;
+        for (CuentaBanco cuenta : this.cuentas){
+            if(cuenta.getSaldo() > mayorSaldo){
+                mayorSaldo = cuenta.getSaldo();
+                cuentaMayorSaldo = cuenta;
+            }
+        }
+        if(cuentaMayorSaldo == null){
+            return "No hay cuentas en el banco";
+        }
+        return cuentaMayorSaldo.getTitular().getNombre();
+    }
 
 }

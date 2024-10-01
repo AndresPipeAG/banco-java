@@ -1,15 +1,20 @@
 package Cuenta_banco;
 
+import java.util.ArrayList;
+
 public class CuentaBanco {
 
         String numero;
         double saldo=0.0;
         String tipo;
-
-        public CuentaBanco(String tipo, String numero, double saldo){//Constructor
+        Cliente titular;
+        
+        
+        public CuentaBanco(String tipo, String numero, double saldo, Cliente titular){//Constructor
             this.numero = numero;
             this.saldo = saldo;
             this.tipo = tipo;
+            this.titular = titular;
         }
 
         public CuentaBanco(String tipo, String numero){//Constructor
@@ -17,9 +22,9 @@ public class CuentaBanco {
             this.tipo = tipo;
         }
 
-        public CuentaBanco(){//Constructor
-            this("Ahorros", "",0);
-        }
+        // public CuentaBanco(){//Constructor
+        //     this("Ahorros", "",0);
+        // }
         //Getters y Setters
         public String getNumero() {
             return numero;
@@ -45,6 +50,13 @@ public class CuentaBanco {
             this.tipo = tipo;
         }
 
+        public Cliente getTitular() {
+            return titular;
+        }
+
+        public void setTitular(Cliente titular) {
+            this.titular = titular;
+        }
         //Métodos
 
         public double consultarSaldo(){
@@ -63,5 +75,7 @@ public class CuentaBanco {
                 return false;
             }
         }
+
+        
     
 }

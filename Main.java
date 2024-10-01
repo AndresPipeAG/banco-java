@@ -21,18 +21,18 @@ public class Main {
         // }
         // System.out.println(cuenta.consultarSaldo());
 
-        CuentaBanco cuenta1 = new CuentaBanco();
-        CuentaBanco cuenta2 = new CuentaBanco();
-        CuentaBanco cuenta3 = new CuentaBanco();
+        // CuentaBanco cuenta1 = new CuentaBanco();
+        // CuentaBanco cuenta2 = new CuentaBanco();
+        // CuentaBanco cuenta3 = new CuentaBanco();
 
-        cuenta1 = new CuentaBanco("Ahorros", "123456-7", 100000);
-        cuenta2 = new CuentaBanco("Ahorros", "123456-8");
-        cuenta3 = cuenta1;
+        // cuenta1 = new CuentaBanco("Ahorros", "123456-7", 100000);
+        // cuenta2 = new CuentaBanco("Ahorros", "123456-8");
+        // cuenta3 = cuenta1;
 
-        ArrayList<CuentaBanco> cuentas = new ArrayList<>();
-        cuentas.add(cuenta1);
-        cuentas.add(cuenta2);
-        cuentas.add(cuenta3);
+        // ArrayList<CuentaBanco> cuentas = new ArrayList<>();
+        // cuentas.add(cuenta1);
+        // cuentas.add(cuenta2);
+        // cuentas.add(cuenta3);
 
 
         // for(int i=0; i < cuentas.size(); i++){
@@ -58,5 +58,25 @@ public class Main {
         // }
     
         //System.out.println("La suma de los saldos es: " + suma);
+
+        Banco banco = new Banco("Mucho Dinero");
+        Cliente cliente = new Cliente("1234567", "Andrés Felipe");
+        boolean pudoAdcionar = banco.adicionarCuenta("1234", 100000, "Ahoros", cliente);
+        if(pudoAdcionar){
+            System.out.println("Cuenta adicionada.");
+        }else{
+            System.out.println("No se pudo adicionar la cuetna.");
+        }
+
+        cliente = new Cliente("1234568", "Andrés Félix");
+        pudoAdcionar = banco.adicionarCuenta("123-4", 200000, "Corriente", cliente);
+        if(pudoAdcionar){
+            System.out.println("Cuenta adicionada.");
+        }else{
+            System.out.println("No se pudo adicionar la cuetna.");
+        }
+
+        System.out.println("DINERO TOTAL DEL BANCO:" + banco.consultarTotalDinero() + " Nombre: " +cliente.getNombre());
+        
     }
 }
